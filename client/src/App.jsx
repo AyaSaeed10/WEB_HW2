@@ -1,22 +1,26 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Component } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Login from './Components/login'
+import Register from './Components/register'
+import StarterPage from './Components/starterPage'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ChooseProfile from './Components/chooseProfile'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    fetch("http://localhost:5000/")
-      .then(res => res.text())
-      .then(data => console.log("From server:", data))
-      .catch(err => console.error(err))
-  }, [])
-
   return (
-    
-      <div>Hello Team</div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<StarterPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/chooseProfile" element={<ChooseProfile />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App
